@@ -97,7 +97,6 @@ public class homework2 {
         for (int i = 0; i < n; i++) {
             System.out.print(first + " ");
 
-            // 다음 항 계산
             long next = first + second;
             first = second;
             second = next;
