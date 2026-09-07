@@ -1,7 +1,7 @@
 # OOP2023
 ### Homework1
 ```java
-public class HomeWorld {
+public class Homework1 {
 
 	public static void main(String []args){
 
