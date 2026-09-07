@@ -7,4 +7,4 @@ public class BootSpringBootApplication {
   }
 }
 ```
-![Alt homework11](./images/homework1.jpg)
+!"C:\Users\u209-20\Desktop\스크린샷 2026-09-07 141336.png"
