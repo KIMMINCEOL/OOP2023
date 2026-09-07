@@ -132,3 +132,18 @@ public class Homework3 {
 ```
 ![Alt homework3](./images/homework3.png)
 
+### Homework4
+```java
+public class Homework4 {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 9; i++) {
+            System.out.println("=== " + i + " ===");
+            for (int j = 1; j <= 9; j++) {
+                System.out.printf("%d x %d = %d\n", i, j, i * j);
+            }
+            System.out.println();
+        }
+    }
+}
+```
+![Alt homework4](./images/homework4.png)
