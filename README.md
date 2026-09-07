@@ -105,3 +105,30 @@ public class homework2 {
 }
 ```
 ![Alt homework2](./images/homework2.png)
+
+### Homework3
+```java
+public class Homework3 {
+    public static void main(String[] args) {
+        int n = 20; 
+        
+        long first = 1;
+        long second = 1;
+        
+        for (int i = 1; i <= n; i++) {
+            if (i == 1) {
+            } else {
+                long next = first + second;
+                double ratio = (double) second / first;
+                
+                System.out.printf("%d / %d\t\t%.10f\n", second, first, ratio);
+                
+                first = second;
+                second = next;
+            }
+        }
+    }
+}
+```
+![Alt homework3](./images/homework3.png)
+
