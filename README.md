@@ -83,4 +83,26 @@ public class HomeWorld {
 
 }
 ```
-![Alt homework11](./images/homework1.png)
+![Alt homework1](./images/homework1.png)
+
+### Homework1
+```java
+public class homework2 {
+    public static void main(String[] args) {
+        int n = 20; 
+        
+        long first = 0;
+        long second = 1;
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print(first + " ");
+
+            // 다음 항 계산
+            long next = first + second;
+            first = second;
+            second = next;
+        }
+    }
+}
+```
+![Alt homework2](./images/homework2.png)
