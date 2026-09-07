@@ -14,4 +14,4 @@ public class Homework1{
 }
 
 ```
-![Alt homework1]("C:\Users\u209-20\Desktop\homework1.png")
+![Alt homework1](./images/homework1.jpg)
