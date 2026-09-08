@@ -147,3 +147,31 @@ public class Homework4 {
 }
 ```
 ![Alt homework4](./images/homework4.png)
+
+### Homework5
+```java
+public class homework5 {
+    public static void main(String[] args) {
+        String fountain = "pi = ";
+        int sign = 1;
+
+        // 분모
+        for (int i = 1; i <= 30; i += 2) {
+            if (i == 1) {
+               fountain += "4/1";
+            } else {
+                // sign이 양수면 +, 음수면 - 기호 붙이기
+                if (sign > 0) {
+                    fountain += " + 4/" + i;
+                } else {
+                    fountain += " - 4/" + i;
+                }
+            }
+            sign = -sign; // 다음 항을 위해 부호 반전
+        }
+
+        System.out.println(fountain);
+    }
+}
+```
+![Alt homework3](./images/homework3.png)
