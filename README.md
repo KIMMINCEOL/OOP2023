@@ -175,3 +175,26 @@ public class homework5 {
 }
 ```
 ![Alt homework3](./images/homework3.png)
+
+### Homework7
+```java
+public class homework7 {
+    public static void main(String[] args) {
+       int data[] = new int[20];
+    System.out.print("before");
+    System.out.println("  after");
+for(int i=0; i<20; i++)
+    data[i]=(int)(Math.random()*100);
+for(int i=0; i<20; i++)
+    System.out.println(data[i]);
+   
+for(int c=0; c<20; c++)
+    data[c]=(int)(Math.random()*100);
+for(int c=0; c<20; c++)
+    System.out.println(data[c]);        
+    }
+}
+
+
+```
+![Alt homework4](./images/homework4.png)
