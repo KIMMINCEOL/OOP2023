@@ -85,7 +85,7 @@ public class Homework1 {
 ```
 ![Alt homework1](./images/homework1.png)
 
-### Homework1
+### Homework2
 ```java
 public class homework2 {
     public static void main(String[] args) {
