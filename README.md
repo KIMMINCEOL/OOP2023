@@ -180,21 +180,45 @@ public class homework5 {
 ```java
 public class homework7 {
     public static void main(String[] args) {
-       int data[] = new int[20];
-    System.out.print("before");
-    System.out.println("  after");
-for(int i=0; i<20; i++)
-    data[i]=(int)(Math.random()*100);
-for(int i=0; i<20; i++)
-    System.out.println(data[i]);
-   
-for(int c=0; c<20; c++)
-    data[c]=(int)(Math.random()*100);
-for(int c=0; c<20; c++)
-    System.out.println(data[c]);        
+        int data[] = new int[20];
+
+        // 1. 랜덤
+        for (int i = 0; i < 20; i++) {
+            data[i] = (int) (Math.random() * 100);
+        }
+
+        // 2. 선택 정렬 전
+        System.out.println("before");
+        for (int i = 0; i < 20; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println("\n");
+
+        // 3. 선택 정렬 알고리즘
+        for (int i = 0; i < data.length - 1; i++) {
+            int minimum = i; // 최솟값의 위치 기록
+
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[minimum]) {
+                    minimum = j; // 더 작은 값을 찾으면 인덱스 갱신
+                }
+            }
+
+            // 최솟값과 현재 위치(i)의 값을 교환(Swap)
+            int temp = data[minimum];
+            data[minimum] = data[i];
+            data[i] = temp;
+        }
+
+        // 4. 정렬 후 배열 출력
+        System.out.println("after");
+        for (int i = 0; i < 20; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
     }
 }
 
 
 ```
-![Alt homework4](./images/homework4.png)
+![Alt homework7](./images/homework7.png)
