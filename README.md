@@ -291,3 +291,58 @@ public class homework7 {
 
 ```
 ![Alt homework7](./images/homework7.png)
+
+### Homework8
+```java
+public class Homework8 {
+    public static void main(String[] args) {
+        int students = 5; // 학생 수
+        int subjects = 4;  // 과목 수 (국어, 영어, 수학, 과학)
+        
+        // 30명 x 4과목 2차원 배열 선언
+        int[][] score = new int[students][subjects];
+        
+        // 과목별 합계를 저장할 배열 (0:국어, 1:영어, 2:수학, 3:과학)
+        int[] subjectSum = new int[subjects];
+
+        // 1. 성적 랜덤 생성 (0~100)
+        for (int i = 0; i < students; i++) {
+            for (int j = 0; j < subjects; j++) {
+                score[i][j] = (int) (Math.random() * 101); // 0~100점
+            }
+        }
+
+        // 헤더 출력
+        System.out.println("Num\tK\tE\tM\tS\ttotal");
+        System.out.println("-------------------------------------------");
+
+        // 2. 학생별 성적 출력 및 총점/과목별 합계 계산
+        for (int i = 0; i < students; i++) {
+            int studentSum = 0; // 개인별 합계
+            
+            System.out.print((i + 1) + "\t"); // 학생 번호 (1~30)
+            
+            for (int j = 0; j < subjects; j++) {
+                System.out.print(score[i][j] + "\t");
+                studentSum += score[i][j];      // 개인 합계 누적
+                subjectSum[j] += score[i][j];   // 과목별 합계 누적
+            }
+            
+            System.out.println(studentSum); // 개인 총점 출력
+        }
+
+        System.out.println("-------------------------------------------");
+
+        // 3. 과목별 평균 계산 및 출력
+        System.out.print("a\t"); //평균
+        for (int j = 0; j < subjects; j++) {
+            double avg = (double) subjectSum[j] / students; // 과목별 평균
+            System.out.printf("%.1f ", avg);               
+        }
+        System.out.println();
+    }
+}
+
+```
+![Alt homework8](./images/homework8.png)
+
