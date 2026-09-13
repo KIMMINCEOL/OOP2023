@@ -174,7 +174,7 @@ public class homework5 {
     }
 }
 ```
-![Alt homework3](./images/homework3.png)
+![Alt homework5](./images/homework5.png)
 
 ### Homework6
 ```java
