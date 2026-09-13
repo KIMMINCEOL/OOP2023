@@ -176,6 +176,75 @@ public class homework5 {
 ```
 ![Alt homework3](./images/homework3.png)
 
+### Homework6
+```java
+public class homework6 {
+    public static void main(String[] args) {
+        int n = 7; // 출력할 행의 수 (0승부터 6승까지)
+        int[][] binomial = new int[n][];
+
+        // 1. 이항계수 배열 생성 및 파스칼의 삼각형 계산
+        for (int i = 0; i < n; i++) {
+            binomial[i] = new int[i + 1]; 
+            binomial[i][0] = 1;         
+            binomial[i][i] = 1;         
+
+          
+            for (int j = 1; j < i; j++) {
+                binomial[i][j] = binomial[i - 1][j - 1] + binomial[i - 1][j];
+            }
+        }
+
+        // 2. 파스칼의 삼각형 이항계수 출력
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print(binomial[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println(); 
+
+       
+        for (int i = 2; i <= 4; i++) {
+            System.out.print("(a+b)^" + i + "=");
+
+            for (int j = 0; j <= i; j++) {
+                int coeff = binomial[i][j]; 
+                int aExp = i - j;          
+                int bExp = j;                
+
+              
+                if (j > 0) {
+                    System.out.print("+");
+                }
+
+             
+                if (coeff > 1) {
+                    System.out.print(coeff);
+                }
+
+              
+                if (aExp == 1) {
+                    System.out.print("a");
+                } else if (aExp > 1) {
+                    System.out.print("a^" + aExp);
+                }
+
+              
+                if (bExp == 1) {
+                    System.out.print("b");
+                } else if (bExp > 1) {
+                    System.out.print("b^" + bExp);
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+```
+![Alt homework6](./images/homework6.png)
+
 ### Homework7
 ```java
 public class homework7 {
