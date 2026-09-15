@@ -346,3 +346,8 @@ public class Homework8 {
 ```
 ![Alt homework8](./images/homework8.png)
 
+### Homework12
+
+int 78 = 64 + 8 + 6 = 01001101
+int -78 = 10110010 + 1 =10110011
+
