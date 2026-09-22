@@ -346,6 +346,10 @@ public class Homework8 {
 ```
 ![Alt homework8](./images/homework8.png)
 
+### Homework9
+
+![Alt homework9](./images/homework9.jpeg)
+
 ### Homework11
 
 package histogram11;
