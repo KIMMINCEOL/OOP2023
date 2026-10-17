@@ -573,3 +573,126 @@ public class MiniCalculator {
 }
 
 ![Alt homework13](./images/homework13.png)
+
+### Homework14
+
+import java.util.Arrays;
+
+class Numbers {
+    int num[];
+    
+    Numbers(int num[]) {
+        this.num = num;
+    }
+    
+    double getTotal() {
+        double sum = 0;
+        for(int i = 0; i < num.length; i++) {
+            sum += num[i];
+        }
+        return sum;
+    }
+    
+    double getArithmaticMean() {
+        return getTotal() / num.length;
+    }
+    
+    double getHarmonicMean() {
+        double harmonicSum = 0;
+        for(int i = 0; i < num.length; i++) {
+            harmonicSum += 1.0 / num[i]; // 역수의 합
+        }
+        return num.length / harmonicSum;
+    }
+    
+    double getGeometricMean() {
+        double prod = 1.0;
+        for(int i = 0; i < num.length; i++) {
+            prod *= num[i];
+        }
+        return Math.pow(prod, 1.0 / num.length);
+    }   
+    
+    // 중앙값은 짝수 개일 때 소수점이 나올 수 있으므로 반환형을 double로 수정했습니다.
+    double getMedian() {
+        sorting(); // 중앙값을 구하기 전 반드시 정렬
+        if (num.length % 2 == 0) {
+            return (num[num.length / 2 - 1] + num[num.length / 2]) / 2.0;
+        } else {
+            return num[num.length / 2];
+        }
+    }
+    
+    void sorting() {
+        Arrays.sort(num);
+    }
+    
+    void drawHistogram(int start, int end, int binCount, int scale) {
+        // 구간의 크기 계산 (예: 0~100을 10개 구간으로 나누면 크기는 10)
+        int binSize = (end - start) / binCount;
+        int[] hist = new int[binCount];
+        
+        for (int i = 0; i < num.length; i++) {
+            // 범위를 벗어나는 값 예외 처리
+            if (num[i] >= start && num[i] <= end) {
+                int binIndex = (num[i] - start) / binSize;
+                if (binIndex >= binCount) {
+                    binIndex = binCount - 1; // 딱 end 값인 경우 마지막 구간에 포함
+                }
+                hist[binIndex]++;
+            }
+        }
+        
+        System.out.println("\n[ 도수분포표 (히스토그램) ]");
+        for (int i = 0; i < binCount; i++) {
+            int rangeStart = start + (i * binSize);
+            int rangeEnd = rangeStart + binSize - 1;
+            
+            System.out.printf("%2d~%-2d\t", rangeStart, rangeEnd);
+            
+            int hashCount = hist[i] / scale;
+            for (int j = 0; j < hashCount; j++) {
+                System.out.print("#");
+            }
+            System.out.println(" (" + hist[i] + ")");
+        }
+    }
+    
+    void display() {
+        System.out.printf("%3d :", num.length);     
+        for(int i = 0; i < num.length; i++) {
+            System.out.printf("%3d ", num[i]);
+        }
+        System.out.println();
+    }   
+}
+
+public class NumbersTest {
+    public static void main(String[] args) {
+        int size = 100;
+        int data[] = new int[size];
+        
+        // 기하/조화평균 계산 시 0이 들어가면 에러가 발생하므로 난수 범위를 1~100으로 설정
+        for(int i = 0; i < size; i++) {
+            data[i] = (int)(Math.random() * 100) + 1;
+        }
+        
+        Numbers obj = new Numbers(data);
+        
+        // 전체 데이터 출력
+        System.out.println("[ 생성된 난수 데이터 ]");
+        obj.display();
+        
+        // 통계치 출력
+        System.out.println("\n[ 통계 결과 ]");
+        System.out.printf("Arithmetic Mean : %5.2f\n", obj.getArithmaticMean());
+        System.out.printf("Geometric Mean  : %5.2f\n", obj.getGeometricMean());     
+        System.out.printf("Harmonic Mean   : %5.2f\n", obj.getHarmonicMean());       
+        System.out.printf("Median          : %5.2f\n", obj.getMedian());      
+        
+        // 히스토그램 출력 (시작 0, 종료 100, 10개 구간(0~9, 10~19...), 비율 1)
+        obj.drawHistogram(0, 100, 10, 1);
+    }
+}
+
+![Alt homework14](./images/homework14.png)
