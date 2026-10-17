@@ -350,6 +350,65 @@ public class Homework8 {
 
 ![Alt homework9](./images/homework9.jpeg)
 
+### Homework10
+
+public class Histogram {
+    public static void main(String[] args) {
+        int array_count, max_value, bin_size, display_scale, hist_size;
+        
+        // 명령행 인수가 4개 들어오면 그 값을 사용하고, 아니면 기본값 사용
+        if (args.length == 4) {
+            array_count = Integer.parseInt(args[0]);
+            max_value = Integer.parseInt(args[1]);
+            bin_size = Integer.parseInt(args[2]);
+            display_scale = Integer.parseInt(args[3]);
+        } else {
+            System.out.println("※ 매개변수가 입력되지 않아 기본값(100 100 10 1)으로 실행합니다.\n");
+            array_count = 100;
+            max_value = 100;
+            bin_size = 10;
+            display_scale = 1;
+        }
+        
+        hist_size = max_value / bin_size;
+        
+        int[] arr = new int[array_count];
+        int[] hist = new int[hist_size];
+        
+        // 1. 난수 생성 및 배열에 저장
+        for (int i = 0; i < array_count; i++) {
+            arr[i] = (int) (Math.random() * max_value);
+        }
+        
+        // 2. 도수분포 계산
+        for (int i = 0; i < array_count; i++) {
+            hist[arr[i] / bin_size]++;
+        }
+        
+        // 3. 도수분포표(히스토그램) '#'으로 가로 출력
+        for (int i = 0; i < hist_size; i++) {
+            // 구간(Range) 계산
+            int startRange = i * bin_size;
+            int endRange = startRange + bin_size - 1;
+            
+            // 구간 텍스트 출력
+            System.out.printf("%2d~%-2d\t", startRange, endRange);
+            
+            // display_scale을 적용하여 출력할 '#'의 개수 계산
+            int hashCount = hist[i] / display_scale;
+            
+            // '#' 가로로 출력
+            for (int j = 0; j < hashCount; j++) {
+                System.out.print("#");
+            }
+            System.out.println();
+        }
+    }
+}
+
+![Alt homework9](./images/homework10.jpeg)
+
+
 ### Homework11
 
 package histogram11;
