@@ -406,7 +406,7 @@ public class Histogram {
     }
 }
 
-![Alt homework9](./images/homework10.jpeg)
+![Alt homework10](./images/homework10.png)
 
 
 ### Homework11
