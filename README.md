@@ -454,4 +454,92 @@ public class histogram11 {
 int 78 = 64 + 8 + 6 = 01001110
 int -78 = 10110001 + 1 =10110010
 
+### Homework13
 
+import java.util.Scanner;
+
+public class MiniCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("계산식을 입력하세요 (종료하려면 exit 입력).");
+        System.out.println("예시: 2 + 3, 32 # 56, 2 + 4 # 7 (띄어쓰기 필수)");
+
+        while (true) {
+            System.out.print("> ");
+            String inputString = scanner.nextLine();
+            
+            // exit 입력 시 프로그램 종료
+            if (inputString.equalsIgnoreCase("exit")) {
+                System.out.println("계산기를 종료합니다.");
+                break;
+            }
+
+            // 공백을 기준으로 문자열을 잘라서 배열에 저장
+            String[] arr = inputString.split(" ");
+            
+            try {
+                // 피연산자 2개, 연산자 1개인 경우 (예: 2 + 3)
+                if (arr.length == 3) {
+                    int num1 = Integer.parseInt(arr[0]);
+                    String op = arr[1];
+                    int num2 = Integer.parseInt(arr[2]);
+                    
+                    int result = calculate(num1, op, num2);
+                    System.out.println("결과: " + result);
+                } 
+                // 피연산자 3개, 연산자 2개인 경우 (예: 2 + 4 # 7)
+                else if (arr.length == 5) {
+                    int num1 = Integer.parseInt(arr[0]);
+                    String op1 = arr[1];
+                    int num2 = Integer.parseInt(arr[2]);
+                    String op2 = arr[3];
+                    int num3 = Integer.parseInt(arr[4]);
+                    
+                    int result = 0;
+                    
+                    // 사칙연산 우선순위 적용: 두 번째 연산자가 # 이나 / 이고, 첫 번째 연산자가 + 나 - 일 때
+                    if ((op2.equals("#") || op2.equals("/")) && (op1.equals("+") || op1.equals("-"))) {
+                        // 뒤쪽을 먼저 계산 (num2 op2 num3)
+                        int temp = calculate(num2, op2, num3);
+                        // 그 결과를 앞쪽과 계산
+                        result = calculate(num1, op1, temp);
+                    } else {
+                        // 그 외의 경우는 앞에서부터 순서대로 계산
+                        int temp = calculate(num1, op1, num2);
+                        result = calculate(temp, op2, num3);
+                    }
+                    
+                    System.out.println("결과: " + result);
+                } else {
+                    System.out.println("지원하지 않는 형식입니다. 피연산자는 최대 3개까지만 가능합니다.");
+                }
+            } catch (Exception e) {
+                System.out.println("오류: 띄어쓰기를 지켜서 올바른 수식을 입력해주세요.");
+            }
+        }
+        
+        scanner.close();
+    }
+
+    // 실제 연산을 수행하는 메서드 분리
+    public static int calculate(int a, String op, int b) {
+        if (op.equals("+")) {
+            return a + b;
+        } else if (op.equals("-")) {
+            return a - b;
+        } else if (op.equals("#")) {  // * 대신 # 사용
+            return a * b;
+        } else if (op.equals("/")) {
+            if (b == 0) {
+                System.out.println("경고: 0으로 나눌 수 없습니다.");
+                return 0;
+            }
+            return a / b;
+        } else {
+            System.out.println("알 수 없는 연산자입니다: " + op);
+            return 0;
+        }
+    }
+}
+
+![Alt homework13](./images/homework13.png)
