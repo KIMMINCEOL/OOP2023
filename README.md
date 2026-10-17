@@ -411,43 +411,73 @@ public class Histogram {
 
 ### Homework11
 
-package histogram11;
+import java.util.Arrays;
 
-public class histogram11 {
+public class MeanCalculator {
+    public static void main(String[] args) {
+        int array_count;
+        
+        if (args.length == 1) {
+            array_count = Integer.parseInt(args[0]);
+        } else {
+            System.out.println("※ 배열 크기.\n");
+            array_count = 10;
+        }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int array_count, max_value, bin_size, display_scale, hist_size;
-		if(args.length !=4)
-			return;
-		array_count = Integer.parseInt(args[0]);
-		max_value = Integer.parseInt(args[1]);
-		bin_size = Integer.parseInt(args[2]);
-		display_scale = Integer.parseInt(args[3]);
-		hist_size = max_value/bin_size;
-		
-		int[] arr = new int[array_count];
-		int[] hist = new int[hist_size];
-		for (int i=0; i<array_count; i++) {
-			arr[i] = (int) (Math.random()*max_value);
-		}
-		for (int i=0; i<array_count; i++) {
-			System.out.print(arr[i] + " ");  
-		}
-		System.out.println();  
-		
-		for (int i=0; i<array_count; i++) {
-			hist[arr[i]/bin_size]++;
-		}
-		for (int i=0; i<hist_size; i++) {
-			System.out.print(hist[i] + " ");  
-		}
-		System.out.println();  
-	}
+        if (array_count <= 0) return;
 
-	}
+        int[] arr = new int[array_count];
+        
+        // 0이 나오면 기하/조화평균 계산이 불가능하므로 난수 범위는 1~100으로 설정
+        for (int i = 0; i < array_count; i++) {
+            arr[i] = (int) (Math.random() * 100) + 1;
+        }
 
-![Alt homework8](./images/homework8.png)
+        System.out.print("생성된 데이터: ");
+        for (int i = 0; i < array_count; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println("\n");
+
+        // 1. 산술평균 (Arithmetic Mean)
+        double sum = 0;
+        for (int i = 0; i < array_count; i++) {
+            sum += arr[i];
+        }
+        double arithmeticMean = sum / array_count;
+        System.out.printf("Arithmetic Mean : %f\n", arithmeticMean);
+
+        // 2. 기하평균 (Geometric Mean)
+        double prod = 1.0;
+        for (int i = 0; i < array_count; i++) {
+            prod *= arr[i];
+        }
+        double geometricMean = Math.pow(prod, 1.0 / array_count);
+        System.out.printf("Geometric Mean  : %f\n", geometricMean);
+
+        // 3. 조화평균 (Harmonic Mean)
+        double harmonicSum = 0;
+        for (int i = 0; i < array_count; i++) {
+            harmonicSum += 1.0 / arr[i]; // 역수의 합
+        }
+        double harmonicMean = array_count / harmonicSum;
+        System.out.printf("Harmonic Mean   : %f\n", harmonicMean);
+
+        // 4. 중앙값 (Median)
+        Arrays.sort(arr); // 중앙값을 구하기 위해 배열 오름차순 정렬
+        double median;
+        if (array_count % 2 == 0) {
+            // 짝수 개일 경우 가운데 두 값의 평균
+            median = (arr[array_count / 2 - 1] + arr[array_count / 2]) / 2.0;
+        } else {
+            // 홀수 개일 경우 정확히 가운데 있는 값
+            median = arr[array_count / 2];
+        }
+        System.out.printf("Median          : %f\n", median);
+    }
+}
+
+![Alt homework11](./images/homework11.png)
 
 ### Homework12
 
